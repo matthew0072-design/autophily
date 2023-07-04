@@ -44,7 +44,7 @@ const relatedProducts = allProducts.filter((product:any) => product.id  !== curr
 
 
 // Function to get a specified number of random elements from an array
-function getRandomElements(array:any, numElements:any) {
+function getRandomElements(array:string[] | number[], numElements:number) {
     const shuffledArray = array.sort(() => 0.5 - Math.random());
     return shuffledArray.slice(0, numElements);
   }
@@ -58,10 +58,6 @@ const productsYouMayLike = getRandomElements(relatedProducts, 3);
 
 
 
-
-
-
-    
     //To fetch a single product by id
     const productDetails = await fetch(`http://localhost:3000/headphones/api/eachPage/?id=${params.id}`)
 
