@@ -13,8 +13,16 @@ interface IformInput {
     zip: number,
     city: string,
     country: string
+    eNumber: number,
+    ePin: number
+
 }
 
+
+enum paymentType {
+    eMoney = "e Money",
+    cashOnDelivery = "cash on delivery"
+}
 
 
 
@@ -66,9 +74,7 @@ const onHandleSubmit = (data: any) => {
                             <label>Payment Method</label>
                             <input type="radio" {...register('payment-method')} value="e-Money" />
                             
-                            <input type="radio" {...register('payment-method')} value="cash on delivery" />
-                            
-                             
+                            <input type="radio" {...register('payment-method')} value="cash on delivery" />  
                         </div>
                         <div>
                             <label htmlFor='e-money transfer'>

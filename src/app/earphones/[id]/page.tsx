@@ -33,11 +33,11 @@ export default async function Page ({ params } : { params: { id:number }}) {
     const productResponse = await fetch('http://localhost:3000/headphones/api/')
     const allProducts = await productResponse.json()
     
-    const currentProduct = allProducts.find((product:any) => product.id === parseInt(params.id))
+    const currentProduct = allProducts.find((product:any) => product.id === Number(params.id))
 
 
     // Filter the remaining products based on category
-const relatedProducts = allProducts.filter(product => product.id  !== currentProduct.id);
+const relatedProducts = allProducts.filter((product:any) => product.id  !== currentProduct.id);
 
 
 
