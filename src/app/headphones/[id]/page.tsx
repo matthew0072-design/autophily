@@ -44,7 +44,7 @@ export default async function Page ({ params } : { params: { id:number }}) {
 
 
 // Function to get a specified number of random elements from an array
-function getRandomElements(array:any, numElements:any) {
+function getRandomElements(array: string[] | number[], numElements:number) {
     const shuffledArray = array.sort(() => 0.5 - Math.random());
     return shuffledArray.slice(0, numElements);
   }
