@@ -33,18 +33,18 @@ export default async function Page ({ params } : { params: { id:number }}) {
     const allProducts = await productResponse.json()
 
 
-     const currentProduct = allProducts.find((product:any) => product.id === parseInt(params.id))
+     const currentProduct = allProducts.find((product:any) => product.id === Number(params.id))
 
 
   //   // Filter the remaining products based on category
-  const relatedProducts = allProducts.filter(product => product.id  !== currentProduct.id);
-  console.log(relatedProducts)  
+  const relatedProducts = allProducts.filter((product:any) => product.id  !== currentProduct.id);
+  
 
 
 
 
 // Function to get a specified number of random elements from an array
-function getRandomElements(array, numElements) {
+function getRandomElements(array:any, numElements:any) {
     const shuffledArray = array.sort(() => 0.5 - Math.random());
     return shuffledArray.slice(0, numElements);
   }

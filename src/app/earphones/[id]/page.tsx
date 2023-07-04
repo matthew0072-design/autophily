@@ -44,7 +44,7 @@ const relatedProducts = allProducts.filter((product:any) => product.id  !== curr
 
 
 // Function to get a specified number of random elements from an array
-function getRandomElements(array, numElements) {
+function getRandomElements(array:any, numElements:any) {
     const shuffledArray = array.sort(() => 0.5 - Math.random());
     return shuffledArray.slice(0, numElements);
   }
