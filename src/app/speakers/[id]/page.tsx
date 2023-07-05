@@ -8,7 +8,7 @@ import Audiogear from '../../components/Audiogear'
 // to get  static path using product id
 export async function generateStaticParams() {
 
-    const response = await fetch('http://127.0.0.1:3000/headphones/api/')
+    const response = await fetch('http://localhost:3000/headphones/api/')
     const productName = await response.json()
  
 
@@ -27,44 +27,126 @@ export async function generateStaticParams() {
 
 export default async function Page ({ params } : { params: { id:number }}) {
 
+  
+//   async function fetchRelatedProduct () {
+// if (process.env.SKIP_FETCH === 'true') {
+//   console.log('skipping fetch')
+// } else {
+
+//   const productResponse = await fetch('http://127.0.0.1:3000/headphones/api/')
+//   const allProducts = await productResponse.json()
+
+//   //To fetch a single product by id
+//   const productDetails = await fetch(`http://127.0.0.1:3000/headphones/api/eachPage/?id=${params.id}`)
+
+//   const product = await productDetails.json()
+
+
+  
+  
+//   const currentProduct = allProducts.find((product:any) => product.id === Number(params.id))
+
+
+//   // Filter the remaining products based on category
+// const relatedProducts = allProducts.filter((product:any) => product.id  !== currentProduct.id);  
+
+// return relatedProducts
+
+// }
+
+//   }
+
+
+// // Function to get a specified number of random elements from an array
+// function getRandomElements(array:string[] | number[], numElements:number) {
+//   const shuffledArray = array.sort(() => 0.5 - Math.random());
+//   return shuffledArray.slice(0, numElements);
+// }
+
+
+// // Select three random related products
+// const productsYouMayLike = getRandomElements(fetchRelatedProduct(), 3);
+
+
+
     
 
 
-    const productResponse = await fetch('http://127.0.0.1:3000/headphones/api/')
-    const allProducts = await productResponse.json()
-    
-    
-    const currentProduct = allProducts.find((product:any) => product.id === Number(params.id))
+async function fetchRelatedProduct() {
+  if (process.env.SKIP_FETCH === 'true') {
+    console.log('Skipping fetch');
+    return [];
+  } else {
 
+    try {
+      const productResponse = await fetch('http://127.0.0.1:3000/headphones/api/');
+      const allProducts = await productResponse.json();
 
-    // Filter the remaining products based on category
-const relatedProducts = allProducts.filter((product:any) => product.id  !== currentProduct.id);  
+     
+      const currentProduct = allProducts.find((product: any) => product.id === Number(params.id));
 
+      // Filter the remaining products based on category
+      const relatedProducts = allProducts.filter((product: any) => product.id !== currentProduct.id);
 
-
+      return relatedProducts;
+    } catch (error) {
+      console.error('Error fetching related products:', error);
+      return [];
+    }
+  }
+}
 
 // Function to get a specified number of random elements from an array
-function getRandomElements(array:string[] | number[], numElements:number) {
-    const shuffledArray = array.sort(() => 0.5 - Math.random());
-    return shuffledArray.slice(0, numElements);
+function getRandomElements(array: string[] | number[], numElements: number) {
+  const shuffledArray = array.sort(() => 0.5 - Math.random());
+  return shuffledArray.slice(0, numElements);
+}
+
+// Usage: Fetch and select three random related products
+async function fetchAndSelectRandomProducts() {
+  const relatedProducts = await fetchRelatedProduct();
+  const productsYouMayLike = getRandomElements(relatedProducts, 3);
+  console.log('Products you may like:', productsYouMayLike);
+}
+
+fetchAndSelectRandomProducts();
+
+ // Fetch a single product by id
+//  const productDetails = await fetch(`http://127.0.0.1:3000/headphones/api/eachPage/?id=${params.id}`);
+//  const product = await productDetails.json();
+
+
+
+async function fetchProductDetails(paramsId: string) {
+  try {
+    if (process.env.SKIP_FETCH === 'true') {
+      console.log('Skipping fetch');
+      return null;
+    }
+
+    const productDetailsResponse = await fetch(`http://127.0.0.1:3000/headphones/api/eachPage/?id=${paramsId}`);
+    const productDetails = await productDetailsResponse.json();
+    return productDetails;
+  } catch (error) {
+    console.error('Error fetching product details:', error);
+    return null;
   }
+}
 
+// Usage: Fetch and display product details
+async function fetchAndDisplayProductDetails() {
+  const paramsId = 'your_id_here'; // Replace with the actual value of params.id
+  const product = await fetchProductDetails(paramsId);
+  if (product) {
+    console.log('Product details:', product);
+    // Proceed with displaying or using the product details
+  } else {
+    console.log('Failed to fetch product details');
+  }
+}
 
-// Select three random related products
-const productsYouMayLike = getRandomElements(relatedProducts, 3);
-
-
-
-
-
-
-    //To fetch a single product by id
-    const productDetails = await fetch(`http://127.0.0.1:3000/headphones/api/eachPage/?id=${params.id}`)
-
-    const product = await productDetails.json()
-
-
-    
+const product = fetchAndDisplayProductDetails();
+console.log(product)
 
     
     
