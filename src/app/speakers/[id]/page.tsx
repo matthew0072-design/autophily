@@ -8,7 +8,7 @@ import Audiogear from '../../components/Audiogear'
 // to get  static path using product id
 export async function generateStaticParams() {
 
-    const response = await fetch('http://127.0.0.1:3000/headphones/api/')
+    const response = await fetch(`${process.env.API_URL}/headphones/api/`)
     const productName = await response.json()
  
 
@@ -29,7 +29,7 @@ export default async function Page ({ params } : { params: { id:number }}) {
 
   
 
-  const productResponse = await fetch('http://127.0.0.1:3000/headphones/api/')
+  const productResponse = await fetch(`${process.env.API_URL}/headphones/api/`)
   const allProducts = await productResponse.json()
 
 
@@ -56,7 +56,7 @@ const productsYouMayLike = getRandomElements(relatedProducts, 3);
 
   
   //To fetch a single product by id
-  const productDetails = await fetch(`http://127.0.0.1:3000/headphones/api/eachPage/?id=${params.id}`)
+  const productDetails = await fetch(`${process.env.API_URL}/headphones/api/eachPage/?id=${params.id}`)
 
   const product = await productDetails.json()
 
