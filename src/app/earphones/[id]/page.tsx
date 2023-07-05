@@ -8,7 +8,7 @@ import Audiogear from '../../components/Audiogear'
 // to get  static path using product id
 export async function generateStaticParams() {
 
-    const response = await fetch('http://localhost:3000/headphones/api/')
+    const response = await fetch('http://127.00.1:3000/headphones/api/')
     const productName = await response.json()
  
 
