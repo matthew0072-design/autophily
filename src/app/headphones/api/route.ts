@@ -2,6 +2,7 @@ import path from 'path';
 import { promises as fsPromises } from 'fs';
 import { NextResponse } from 'next/server';
 
+
 const dataFilePath = path.join(process.cwd(), 'public/productList.json');
 
 export async function GET(request: Request) {
@@ -14,6 +15,6 @@ export async function GET(request: Request) {
 
 } catch (error) {
     console.error('Error reading JSON file:', error);
-    
+    return NextResponse.json({message: error})
   }
 }
