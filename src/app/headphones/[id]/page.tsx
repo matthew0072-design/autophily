@@ -26,10 +26,10 @@ export async function generateStaticParams() {
 
 export default async function Page ({ params } : { params: { id:number }}) {
 
-    
+console.log(process.env.API_URL)    
 
 
-    const productResponse = await fetch(process.env.API_URL + '/headphones/api/', {cache: 'no-store'})
+    const productResponse = await fetch(process.env.API_URL + '/headphones/api/')
   
     const allProducts = await productResponse.json()
 
