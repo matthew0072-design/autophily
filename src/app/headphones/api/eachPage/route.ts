@@ -20,8 +20,10 @@ export async function GET(request: Request) {
         
         const id = searchParams.get('id')
 
-        const jsonData = await fsPromises.readFile(dataFilePath);
-        const productList = JSON.parse(jsonData.toString());
+        const jsonData = await fsPromises.readFile(dataFilePath, 'utf-8');
+        // const productList = JSON.parse(jsonData.toString());
+
+        const productList = JSON.parse(jsonData)
 
         const objectData = productList.find((product:any) => product.id === Number(id))
 
@@ -38,7 +40,7 @@ export async function GET(request: Request) {
  catch(error) {
     
     console.error(error)
-    return NextResponse.json({message: error})
+    return NextResponse.json({message: error}, { status: 404})
     
  }
   
