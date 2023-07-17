@@ -5,11 +5,11 @@ import {Product, useCartStore } from '../store/store'
 import Image from 'next/image'
 import addData from '../firebase/firestore/addData'
 import { useRouter } from 'next/navigation'
-import { FormEventHandler } from 'react'
 
-interface cartItemsProps {
-    product: Product
-}
+
+// interface CartItemsProps {
+//     product: Product
+// }
 
 
 interface IFormInput {
@@ -36,7 +36,7 @@ enum paymentType {
 
 
 
-export default function CheckoutForm({ product }: cartItemsProps) {
+export default function CheckoutForm() {
     const { cart } = useCartStore()
     const router = useRouter()
 
