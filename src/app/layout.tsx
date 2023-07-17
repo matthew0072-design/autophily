@@ -16,10 +16,10 @@ const manrope = Manrope({
 
 
 
-export const metadata = {
-  title: 'Autophily',
-  description: 'Created by Mattscript',
-}
+// export const metadata = {
+//   title: 'Autophily',
+//   description: 'Created by Mattscript',
+// }
 
 export default function RootLayout({
   children,
