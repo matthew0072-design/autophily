@@ -27,7 +27,7 @@ const  { cart } = useCartStore()
 
     return (
        
-       <header className="bg-black text-white relative  h-[58px] box-border border-b border-white   justify-around items-center  flex w-full
+       <header className="bg-black text-white relative   h-[58px] box-border border-b border-white   justify-around items-center  flex w-full
        md:justify-start 
        lg:justify-around lg:h-[100px]
        ">
@@ -61,7 +61,8 @@ height="21">
                      <Link href="/headphones"  className={`${isActive === 'headphones' ? 'text-[#D87D4A]' : 'text-white'} py-2 text-[13px] font-bold leading-[25px] tracking-[2px]`}  onClick={() => setIsNavOpen(false)}>HEADPHONES</Link>
                      <Link href="/speakers"  className={`${isActive === 'speakers' ? 'text-[#D87D4A]' : 'text-white'} py-2 text-[13px] font-bold leading-[25px] tracking-[2px]`} onClick={() => setIsNavOpen(false)}>SPEAKERS</Link>
                      <Link href="/earphones" className={`${isActive === 'earphones' ? 'text-[#D87D4A]' : 'text-white'} py-2 text-[13px] font-bold leading-[25px] tracking-[2px]`} onClick={() => setIsNavOpen(false)}>EARPHONES</Link>    
- 
+                     <Link href="/signup" className={`${isActive === 'signup' ? 'text-[#D87D4A]' : 'text-white'} py-2 text-[13px] font-bold leading-[25px] tracking-[2px]`} onClick={() => setIsNavOpen(false)}>SIGNUP</Link>  
+                     <Link href="/signin" className={`${isActive === 'signin' ? 'text-[#D87D4A]' : 'text-white'} py-2 text-[13px] font-bold leading-[25px] tracking-[2px]`} onClick={() => setIsNavOpen(false)}>SIGNIN</Link>  
              </nav>
                 </div>): (
                     <div className="h-[24px]  flex  flex-col " onClick={() => setIsNavOpen(!isNavOpen)}>
@@ -79,13 +80,14 @@ height="21">
             
             </section>
             
-            <nav className='hidden lg:flex lg:gap-8  lg:w-[427px]  lg:justify-between  '>
+            <nav className='hidden lg:flex lg:gap-8  lg:w-[700px]  lg:justify-between  '>
                      
                      <Link href="/"  className={`${isActive === null ? 'text-[#D87D4A]' : 'text-white'} py-2 text-[13px] font-bold leading-[25px] tracking-[2px]  `}>HOME</Link>
                      <Link href="/headphones"  className={`${isActive === 'headphones' ? 'text-[#D87D4A]' : 'text-white'} py-2 text-[13px] font-bold leading-[25px] tracking-[2px]`}>HEADPHONES</Link>
                      <Link href="/speakers"  className={`${isActive === 'speakers' ? 'text-[#D87D4A]' : 'text-white'} py-2 text-[13px] font-bold leading-[25px] tracking-[2px]` }>SPEAKERS</Link>
                      <Link href="/earphones"  className={`${isActive === 'earphones' ? 'text-[#D87D4A]' : 'text-white'} py-2 text-[13px] font-bold leading-[25px] tracking-[2px]`}>EARPHONES</Link>    
- 
+                     <Link href="/signup" className={`${isActive === 'signup' ? 'text-[#D87D4A]' : 'text-white'} py-2 text-[13px] font-bold leading-[25px] tracking-[2px]`} onClick={() => setIsNavOpen(false)}>SIGN UP</Link>  
+                     <Link href="/signin" className={`${isActive === 'signin' ? 'text-[#D87D4A]' : 'text-white'} py-2 text-[13px] font-bold leading-[25px] tracking-[2px]`} onClick={() => setIsNavOpen(false)}>SIGN IN</Link>  
              </nav>
              <div className=' hover:cursor-pointer  relative ' >
              <button onClick={toggleOverlay}  ><Image src='/cart.png' height={50} width={50} alt='image cart' className=' order-last w-[23px] h-[20px] md:ml-[30rem] lg:ml-0  '  />

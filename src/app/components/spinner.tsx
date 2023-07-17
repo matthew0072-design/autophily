@@ -1,6 +1,8 @@
 export default function Spinner () {
 
     return (
-        <div className="w-12 h-12 rounded-full animate-spin border-x border-dashed border-pink-500 border-t-transparent"></div>
+        <div className="h-screen border-8 w-full flex ">
+            <div className="w-24 h-24 border-8  m-auto rounded-full animate-spin border-x border-dashed border-pink-500 border-t-transparent"></div>
+        </div>
     )
 }

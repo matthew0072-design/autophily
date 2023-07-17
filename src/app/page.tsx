@@ -10,7 +10,7 @@ export default async function Home() {
   // console.log(product)
 
   return (
-    <main className="flex min-h-screen bg-black flex-col ">
+    <main className=" ">
       
       <Headphone />
       <AllProduct />

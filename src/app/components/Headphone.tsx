@@ -4,11 +4,11 @@ import Link from 'next/link'
 export default function Headphone() {
 
     return (
-        <main className="  relative  bg-[url('/headPhone2.png')] mt-4  w-screen md:h-[729px]  bg-no-repeat bg-top  md:bg-center md:bg-[length:550px_600px]  text-white
+        <main className="relative  bg-[url('/headPhone2.png')] bg-black pt-4  w-screen md:h-[729px]  bg-no-repeat bg-top  md:bg-center md:bg-[length:550px_600px]  text-white
         lg:bg-none lg:flex lg:justify-around
         ">
-            <div className='flex flex-col gap-4 h-[390px] md:mt-[13rem] mt-12
-            lg:w-[398px] lg:h-[346px] lg:justify-between lg:items-start l
+            <div className='flex flex-col gap-4 h-[390px] md:mt-[13rem] mt-8
+            lg:w-[398px] lg:h-[346px] lg:justify-between lg:items-start 
             '>
                 <p className='text-sm leading-[19px] text-center tracking-[10px] opacity-50 uppercase 
                 md:text-[#FFFFFF] 
