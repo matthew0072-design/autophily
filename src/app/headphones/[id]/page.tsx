@@ -11,15 +11,11 @@ const dataFilePath = path.join(process.cwd(), 'public/productList.json');
 // to get  static path using product id
 export async function generateStaticParams() {
 
-  
-  //const response = await fetch(process.env.API_URL + '/headphones/api/');
-
-  //const productName = await response.json()
 
   const jsonData = await fsPromises.readFile(dataFilePath);
   const productName = JSON.parse(jsonData.toString());
 
-  //console.log("pn", productName);
+  
 
 
     return productName.map((product:any) => ({
@@ -31,7 +27,6 @@ export async function generateStaticParams() {
 }
 
 
-// export const dynamic = 'force-dynamic'
 
    
 
@@ -42,12 +37,7 @@ export default async function Page ({ params } : { params: { id:number }}) {
 const jsonData = await fsPromises.readFile(dataFilePath);
   const allProducts = JSON.parse(jsonData.toString());
 
-  // console.log("all products",allProducts)
-
-    // const productResponse = await fetch(process.env.API_URL + '/headphones/api/')
   
-    // const allProducts = await productResponse.json()
-
 
      const currentProduct = allProducts.find((product:any) => product.id === Number(params.id))
 
@@ -71,11 +61,7 @@ const productsYouMayLike = getRandomElements(relatedProducts, 3);
 
  
     
-    //To fetch a single product by id
-    // const productDetails = await fetch(`${process.env.API_URL}/headphones/api/eachPage/?id=${params.id}`)
-
-    // const product = await productDetails.json()
-
+   
 
         
     return (
