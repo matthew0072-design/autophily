@@ -50,20 +50,6 @@ export const useCartStore = create (persist<State & Actions> ((set, get) => ({
           },
           
     
-   
-    // updateQuantity: (productId: number, action: 'increase' | 'decrease') => {
-    //     const cart = get().cart;
-    //     const findProduct = cart.find(p => p.id === productId);
-    //     if (findProduct) {
-    //         if (action === 'decrease') {
-    //             findProduct.quantity = findProduct.quantity! > 1 ? findProduct.quantity! - 1 : findProduct.quantity!;
-    //         } else {
-    //             findProduct.quantity! += 1;
-    //         }
-    //     }
-    //     set({ cart });
-    // },
-    
     
 
 
