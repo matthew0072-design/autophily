@@ -10,7 +10,7 @@ export default function Checkout () {
 
     return (
             <main>
-<CheckoutForm/>
+                <CheckoutForm/>
             </main>
     )
 }

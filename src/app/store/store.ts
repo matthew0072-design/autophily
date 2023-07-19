@@ -14,6 +14,7 @@ export interface Product {
 interface State  {
 
     cart: Product[]
+    grandTotal: number
     
 }
 
@@ -22,6 +23,7 @@ interface Actions {
     addToCart: (Item: Product) => void
     removeAllItems: () => void
     updateQuantity: (productId: number, action: 'increase' | 'decrease' ) => void
+    calculateGrandTotal: (total:number) => void
     
 }
 
@@ -30,7 +32,7 @@ interface Actions {
 export const useCartStore = create (persist<State & Actions> ((set, get) => ({
 
         cart: [],
-    
+        grandTotal: 0,
 
         updateQuantity: (productId: number, action: 'increase' | 'decrease') => {
             const cart = get().cart;
@@ -50,11 +52,17 @@ export const useCartStore = create (persist<State & Actions> ((set, get) => ({
           },
           
     
-    
-
+        
+        calculateGrandTotal: (total:number) => {
+            
+          let grandTotal = ((total * 0.05) + total + 10)
+          
+          set({grandTotal: grandTotal}) 
+        },
 
 
     removeAllItems: () => set({cart: [] } ),
+
 
     addToCart: (product: Product) => {
         const cart = get().cart;

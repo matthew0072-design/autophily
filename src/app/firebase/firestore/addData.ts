@@ -12,7 +12,6 @@ export default async function addData(data:any, router: AppRouterInstance){
   try {
     
      await addDoc(collection(db, "products"), data);
-    // successMessage("Product Added Successfully 🎉")
     router.push('/thank-you')
     
       

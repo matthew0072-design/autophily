@@ -7,7 +7,7 @@ import { useCartStore } from '../store/store'
 
 export default function Thank() {
 
-const { cart } = useCartStore()
+const { cart, grandTotal } = useCartStore()
 
 
 
@@ -45,8 +45,8 @@ const { cart } = useCartStore()
                     ))  }
                 </div>
                 <div className='bg-black py-3 rounded-b-lg md:w-[198px] md:rounded-none md:rounded-r-lg '>
-                    <p className='font-medium text-[15px] leading-[25px] opacity-50 uppercase text-white ml-6 '>grand total</p>
-                    <p className='font-bold text-lg leading-[24.59px] text-white ml-6 '>${cart.grandTotal}</p>
+                    <p className='font-medium text-[15px] leading-[25px]  opacity-50 uppercase text-white ml-6  lg:text-lg '>grand total</p>
+                    <p className='font-bold text-lg leading-[24.59px] text-white ml-6 lg:text-2xl md:mt-8 '>${grandTotal}</p>
                 </div>
                 
             </div>

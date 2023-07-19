@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { Product, useCartStore } from '../store/store'
-
+import { successMessage } from '../utils/utils'
 
 
 interface cartItemsProps {
@@ -34,7 +34,8 @@ const [localQuantity, setLocalQuantity] = useState<number>(product.quantity || 1
 
   const handleAddToCart =  () => {
 
-         addToCart(product);    
+         addToCart(product);  
+         successMessage("Product Added to Cart Successfully")  
      
   };
 

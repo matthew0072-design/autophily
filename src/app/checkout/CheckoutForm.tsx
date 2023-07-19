@@ -34,12 +34,12 @@ enum paymentType {
 
 
 export default function CheckoutForm() {
-    const { cart } = useCartStore()
+    const { cart, grandTotal } = useCartStore()
     const router = useRouter()
 
     const { register, handleSubmit, formState: { errors },} = useForm<IFormInput>()
 
-console.log(router.back)
+
 
 
 const onHandleSubmit =  (data: IFormInput) => {
@@ -57,7 +57,7 @@ const onHandleSubmit =  (data: IFormInput) => {
     })
 
     data.products = productItems
-    data.grandTotal = grandTotal
+    data.grandTotal = sumTotal
     
     
         addData(data, router)
@@ -65,6 +65,7 @@ const onHandleSubmit =  (data: IFormInput) => {
         
         
 }
+
 
 
 let total = cart.reduce((acc, item) => {
@@ -76,15 +77,15 @@ let total = cart.reduce((acc, item) => {
   }, 0);
 
 
-let grandTotal = ((total  * 0.05) + total + 10)
 
+let sumTotal = ((total  * 0.05) + total + 10)
 
-
+sumTotal = grandTotal
 
     return (
 
             <main className='w-full relative flex flex-col  bg-[#CFCFCF] pb-8 '>
-                <Link href="/" >Go back </Link>
+                <Link href="/" className='p-4 hover:opacity-70 font-bold' >Go Home </Link>
                 <form onSubmit={handleSubmit(onHandleSubmit)} className=' md:w-[90%]  flex flex-col  items-center mx-2 md:mx-auto gap-4 lg:flex-row lg:items-start lg:justify-around '>
                     
                     <div className=' lg:border lg:w-[730px] bg-white rounded-lg lg:pb-8 pb-4 '>
@@ -187,7 +188,7 @@ let grandTotal = ((total  * 0.05) + total + 10)
                             <p className='text-[15px] font-medium leading-[25px] opacity-50 uppercase '>grand total</p>
                             <p className='text-lg font-bold  '>${grandTotal.toFixed(2)}</p>
                         </div>
-                        <button  className='bg-[#D87D4A] text-white w-full md:w-full text-center text-[13px] font-bold uppercase h-[48px] md:tracking-[1px] '>continue & pay</button>
+                        <button  className='bg-[#D87D4A] hover:opacity-80 text-white w-full md:w-full text-center text-[13px] font-bold uppercase h-[48px] md:tracking-[1px] '>continue & pay</button>
                     </div>
                 </form>
 
