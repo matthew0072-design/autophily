@@ -34,7 +34,8 @@ enum paymentType {
 
 
 export default function CheckoutForm() {
-    const { cart, grandTotal } = useCartStore()
+
+    const { cart, calculateGrandTotal } = useCartStore()
     const router = useRouter()
 
     const { register, handleSubmit, formState: { errors },} = useForm<IFormInput>()
@@ -57,7 +58,7 @@ const onHandleSubmit =  (data: IFormInput) => {
     })
 
     data.products = productItems
-    data.grandTotal = sumTotal
+    data.grandTotal = grandTotal
     
     
         addData(data, router)
@@ -78,9 +79,9 @@ let total = cart.reduce((acc, item) => {
 
 
 
-let sumTotal = ((total  * 0.05) + total + 10)
+let grandTotal = ((total  * 0.05) + total + 10)
 
-sumTotal = grandTotal
+
 
     return (
 
@@ -94,13 +95,13 @@ sumTotal = grandTotal
                             <h3 className='text-[#D87D4A] text-[13px] font-bold leading-[25px] uppercase tracking-[0.929px] lg:p-8  '>billing details</h3>
                             <div className='flex  flex-col gap-4 md:flex-row md:flex-wrap md:gap-4 lg:mx-5 lg:gap-4'>
                                 <label className='text-[12px] font-bold leading-[normal] tracking-[-0.214px] flex flex-col gap-2  '>Name 
-                                    <input placeholder='Alexei Ward'  {...register('name')} className='w-[280px] h-[56px] border border-[#CFCFCF] bg-white p-1.5 rounded-lg md:w-[315px] focus:outline-none focus:border-2 focus:ring-[#D87D4A] focus:border-[#D87D4A] focus:z-10 ' />
+                                    <input placeholder='Alexei Ward' required {...register('name')} className='w-[280px] h-[56px] border border-[#CFCFCF] bg-white p-1.5 rounded-lg md:w-[315px] focus:outline-none focus:border-2 focus:ring-[#D87D4A] focus:border-[#D87D4A] focus:z-10 ' />
                                 </label>
                                 <label className='text-[12px] font-bold leading-[normal] tracking-[-0.214px] flex flex-col gap-2'>Email Address 
-                                    <input type='email' placeholder="alexei@mail.com" {...register('email')} className='w-[280px] h-[56px] border border-[#CFCFCF] bg-white p-1.5 rounded-lg md:w-[315px] focus:border-2 focus:outline-none focus:ring-[#D87D4A] focus:border-[#D87D4A] focus:z-10 '/>
+                                    <input type='email' placeholder="alexei@mail.com" required {...register('email')} className='w-[280px] h-[56px] border border-[#CFCFCF] bg-white p-1.5 rounded-lg md:w-[315px] focus:border-2 focus:outline-none focus:ring-[#D87D4A] focus:border-[#D87D4A] focus:z-10 '/>
                                 </label>
                                 <label className='text-[12px] font-bold leading-[normal] tracking-[-0.214px] flex flex-col gap-2'>Phone Number
-                                    <input type="tel"  placeholder="+1202-555-0136"   {...register('phoneNumber')} className='w-[280px] h-[56px] border border-[#CFCFCF] bg-white p-1.5 rounded-lg md:w-[315px] focus:border-2  focus:outline-none focus:ring-[#D87D4A] focus:border-[#D87D4A] focus:z-10 '/>
+                                    <input type="tel"  placeholder="+1202-555-0136" required  {...register('phoneNumber')} className='w-[280px] h-[56px] border border-[#CFCFCF] bg-white p-1.5 rounded-lg md:w-[315px] focus:border-2  focus:outline-none focus:ring-[#D87D4A] focus:border-[#D87D4A] focus:z-10 '/>
                                 </label>
                             </div>
                         </div>
@@ -109,16 +110,16 @@ sumTotal = grandTotal
                             <h3 className='text-[13px] text-[#D87D4A] font-bold leading-[25px] tracking-[0.929px] uppercase lg:p-8 '>shipping info</h3>
                             <div className='flex flex-col gap-4 md:flex-row md:flex-wrap lg:mx-4 '>
                             <label className='text-[12px] font-bold leading-[normal] tracking-[-0.214px] flex flex-col gap-2 md:w-full   '>Address 
-                                <input  placeholder="1137 William Avenue"  {...register('address')} className='md:w-full w-[280px] h-[56px] border border-[#CFCFCF] bg-white p-1.5 rounded-lg focus:border-2 focus:outline-none focus:ring-[#D87D4A] focus:border-[#D87D4A] focus:z-10 ' />
+                                <input  placeholder="1137 William Avenue" required {...register('address')} className='md:w-full w-[280px] h-[56px] border border-[#CFCFCF] bg-white p-1.5 rounded-lg focus:border-2 focus:outline-none focus:ring-[#D87D4A] focus:border-[#D87D4A] focus:z-10 ' />
                             </label>
                             <label className='text-[12px] font-bold leading-[normal] tracking-[-0.214px] flex flex-col gap-2'>ZIP Code
-                                <input type='tel' placeholder="10001" {...register('zip')} className='w-[280px] h-[56px] border border-[#CFCFCF] bg-white p-1.5 rounded-lg md:w-[315px] focus:border-2 focus:outline-none focus:ring-[#D87D4A] focus:border-[#D87D4A] focus:z-10 '/>
+                                <input type='tel' placeholder="10001" required {...register('zip')} className='w-[280px] h-[56px] border border-[#CFCFCF] bg-white p-1.5 rounded-lg md:w-[315px] focus:border-2 focus:outline-none focus:ring-[#D87D4A] focus:border-[#D87D4A] focus:z-10 '/>
                             </label>
                             <label className='text-[12px] font-bold leading-[normal] tracking-[-0.214px] flex flex-col gap-2'>City
-                                <input   placeholder="New York"   {...register('city')} className='w-[280px] h-[56px] border border-[#CFCFCF] bg-white p-1.5 rounded-lg md:w-[315px] focus:border-2 focus:outline-none focus:ring-[#D87D4A] focus:border-[#D87D4A] focus:z-10 ' />
+                                <input   placeholder="New York" required  {...register('city')} className='w-[280px] h-[56px] border border-[#CFCFCF] bg-white p-1.5 rounded-lg md:w-[315px] focus:border-2 focus:outline-none focus:ring-[#D87D4A] focus:border-[#D87D4A] focus:z-10 ' />
                             </label>
                             <label className='text-[12px] font-bold leading-[normal] tracking-[-0.214px] flex flex-col gap-2'>Country
-                                <input placeholder="United States" {...register('country')} className='w-[280px] h-[56px] border border-[#CFCFCF] bg-white p-1.5 rounded-lg md:w-[315px] focus:border-2 focus:outline-none focus:ring-[#D87D4A] focus:border-[#D87D4A] focus:z-10 '/>
+                                <input placeholder="United States" required {...register('country')} className='w-[280px] h-[56px] border border-[#CFCFCF] bg-white p-1.5 rounded-lg md:w-[315px] focus:border-2 focus:outline-none focus:ring-[#D87D4A] focus:border-[#D87D4A] focus:z-10 '/>
                             </label>
                             </div>
                         </div>
@@ -130,11 +131,11 @@ sumTotal = grandTotal
                                 
                                 <div className="flex flex-col gap-4 w-auto lg:mx-8   ">
                                     <label className='text-[12px] rounded-lg font-bold leading-[normal] tracking-[-0.214px] flex  gap-2 border-2  w-[280px] h-[56px] items-center md:w-[315px]  '>
-                                        <input type="radio" {...register('paymentType')} value="e-Money" className=' w-[20px] h-[20px] ml-8  border-[#CFCFCF] bg-white p-1.5 rounded-lg focus:outline-none focus:ring-[#D87D4A] focus:border-[#D87D4A] focus:z-10  ring-[#D87D4A] ring-offset-2 '/>  
+                                        <input type="radio" required {...register('paymentType')} value="e-Money" className=' w-[20px] h-[20px] ml-8  border-[#CFCFCF] bg-white p-1.5 rounded-lg focus:outline-none focus:ring-[#D87D4A] focus:border-[#D87D4A] focus:z-10  ring-[#D87D4A] ring-offset-2 '/>  
                                         <span className='font-bold text-sm  tracking-[-0.25px] '>E - Money</span>
                                     </label>
                                     <label className='text-[12px] rounded-lg font-bold leading-[normal] tracking-[-0.214px] flex  gap-2 border-2 w-[280px] h-[56px] items-center md:w-[315px]'>
-                                    <input type="radio" {...register('paymentType')} value="cash on delivery" className='w-[20px] h-[20px] ml-8 border-2 border-[#CFCFCF] bg-white p-1.5 rounded-lg focus:outline-none focus:ring-[#D87D4A] focus:border-[#D87D4A] focus:z-10  ring-[#D87D4A] ring-offset-2'/>
+                                    <input type="radio" required {...register('paymentType')} value="cash on delivery" className='w-[20px] h-[20px] ml-8 border-2 border-[#CFCFCF] bg-white p-1.5 rounded-lg focus:outline-none focus:ring-[#D87D4A] focus:border-[#D87D4A] focus:z-10  ring-[#D87D4A] ring-offset-2'/>
                                     <span className='font-bold text-sm  tracking-[-0.25px] '>Cash on Delivery</span>
                                     </label>
                                 </div>
@@ -142,10 +143,10 @@ sumTotal = grandTotal
                             </div>
                             <div className='flex flex-col gap-4 md:flex-row w-full relative lg:mx-8'>
                                 <label className='text-[12px] font-bold leading-[normal] tracking-[-0.214px] flex flex-col gap-2 md:w-[315px] '> e-Money Number
-                                    <input type="tel" {...register('eNumber')} placeholder="238521993" className='w-[280px] h-[56px] md:w-[315px] border border-[#CFCFCF] bg-white p-1.5 rounded-lg focus:border-2 focus:outline-none focus:ring-[#D87D4A] focus:border-[#D87D4A] focus:z-10 '/>
+                                    <input type="tel" required {...register('eNumber')} placeholder="238521993" className='w-[280px] h-[56px] md:w-[315px] border border-[#CFCFCF] bg-white p-1.5 rounded-lg focus:border-2 focus:outline-none focus:ring-[#D87D4A] focus:border-[#D87D4A] focus:z-10 '/>
                                 </label> 
                                 <label className='text-[12px] font-bold leading-[normal] tracking-[-0.214px] flex flex-col gap-2 md:w-[315px]'>e-Money Pin
-                                    <input type="tel" {...register('ePin')} placeholder="6891" className='w-[280px] h-[56px] border md:w-[315px] border-[#CFCFCF] bg-white p-1.5 rounded-lg focus:border-2 focus:outline-none focus:ring-[#D87D4A] focus:border-[#D87D4A] focus:z-10' />
+                                    <input type="tel" required {...register('ePin')} placeholder="6891" className='w-[280px] h-[56px] border md:w-[315px] border-[#CFCFCF] bg-white p-1.5 rounded-lg focus:border-2 focus:outline-none focus:ring-[#D87D4A] focus:border-[#D87D4A] focus:z-10' />
                                 </label>
                             </div>
                         </div>
@@ -188,7 +189,7 @@ sumTotal = grandTotal
                             <p className='text-[15px] font-medium leading-[25px] opacity-50 uppercase '>grand total</p>
                             <p className='text-lg font-bold  '>${grandTotal.toFixed(2)}</p>
                         </div>
-                        <button  className='bg-[#D87D4A] hover:opacity-80 text-white w-full md:w-full text-center text-[13px] font-bold uppercase h-[48px] md:tracking-[1px] '>continue & pay</button>
+                        <button onClick={() => calculateGrandTotal(grandTotal)}  className='bg-[#D87D4A] hover:opacity-80 text-white w-full md:w-full text-center text-[13px] font-bold uppercase h-[48px] md:tracking-[1px] '>continue & pay</button>
                     </div>
                 </form>
 

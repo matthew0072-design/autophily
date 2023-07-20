@@ -7,7 +7,7 @@ import { useCartStore } from '../store/store'
 
 export default function Thank() {
 
-const { cart, grandTotal } = useCartStore()
+const { cart, grandTotal, removeAllItems } = useCartStore()
 
 
 
@@ -46,12 +46,12 @@ const { cart, grandTotal } = useCartStore()
                 </div>
                 <div className='bg-black py-3 rounded-b-lg md:w-[198px] md:rounded-none md:rounded-r-lg '>
                     <p className='font-medium text-[15px] leading-[25px]  opacity-50 uppercase text-white ml-6  lg:text-lg '>grand total</p>
-                    <p className='font-bold text-lg leading-[24.59px] text-white ml-6 lg:text-2xl md:mt-8 '>${grandTotal}</p>
+                    <p className='font-bold text-lg leading-[24.59px] text-white ml-6 lg:text-2xl md:mt-8 '>${grandTotal.toFixed(2)}</p>
                 </div>
                 
             </div>
             
-                <Link href="/" className='h-[48px] w-full bg-[#D87D4A] flex items-center justify-center mx-auto md:w-[444px] md:m-0 md:mt-12  text-center text-white leading-[17.76px] tracking-[1px] text-[13px] font-bold uppercase hover:opacity-70' >back to home</Link>
+                <Link href="/" onClick={removeAllItems}  className='h-[48px] w-full bg-[#D87D4A] flex items-center justify-center mx-auto md:w-[444px] md:m-0 md:mt-12  text-center text-white leading-[17.76px] tracking-[1px] text-[13px] font-bold uppercase hover:opacity-70' >back to home</Link>
             
         </main>
     )
