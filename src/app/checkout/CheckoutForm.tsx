@@ -86,7 +86,7 @@ let grandTotal = ((total  * 0.05) + total + 10)
     return (
 
             <main className='w-full relative flex flex-col  bg-[#CFCFCF] pb-8 '>
-                <Link href="/" className='p-4 hover:opacity-70 font-bold' >Go Home </Link>
+                <Link href="/" className=' px-4 lg:px-[7rem] md:px-[2rem] py-8 hover:opacity-70 font-medium text-[15px] leading-[25px]  ' >Go Home </Link>
                 <form onSubmit={handleSubmit(onHandleSubmit)} className=' md:w-[90%]  flex flex-col  items-center mx-2 md:mx-auto gap-4 lg:flex-row lg:items-start lg:justify-around '>
                     
                     <div className=' lg:border lg:w-[730px] bg-white rounded-lg lg:pb-8 pb-4 '>
@@ -186,8 +186,8 @@ let grandTotal = ((total  * 0.05) + total + 10)
                             <p className='text-lg font-bold  '>5%</p>
                         </div>
                         <div className='flex justify-between '>
-                            <p className='text-[15px] font-medium leading-[25px] opacity-50 uppercase '>grand total</p>
-                            <p className='text-lg font-bold  '>${grandTotal.toFixed(2)}</p>
+                            <p className='text-[15px] font-medium leading-[25px] opacity-50 uppercase   '>grand total</p>
+                            <p className='text-lg font-bold text-[#D87D4A]   '>${grandTotal.toFixed(2)}</p>
                         </div>
                         <button onClick={() => calculateGrandTotal(grandTotal)}  className='bg-[#D87D4A] hover:opacity-80 text-white w-full md:w-full text-center text-[13px] font-bold uppercase h-[48px] md:tracking-[1px] '>continue & pay</button>
                     </div>
