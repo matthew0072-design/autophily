@@ -45,7 +45,16 @@ if (cart) {
                     <span className="text-[15px] font-medium leading-[25px] opacity-50 ">Total:</span>
                     <span className="text-lg font-bold uppercase leading-normal text-center ">${total.toFixed(2)} </span>
                     </div>
-                <Link href='/checkout' onClick={onClose}  className='bg-[#D87D4A] text-white h-[48px] mt-5 mb-3 flex items-center justify-center uppercase tracking-[1px] font-bold text-[13px] text-center hover:bg-[#FBAF85] '>checkout</Link>
+
+                    {cart.length > 0 ? (
+  <Link href="/checkout" onClick={onClose} className="bg-[#D87D4A] text-white h-[48px] mt-5 mb-3 flex items-center justify-center uppercase tracking-[1px] font-bold text-[13px] text-center hover:bg-[#FBAF85]">
+    Checkout
+  </Link>
+) : (
+  <div className="bg-[#D87D4A] text-white h-[48px] mt-5 mb-3 flex items-center justify-center uppercase tracking-[1px] font-bold text-[13px] text-center opacity-50 cursor-not-allowed">
+    Checkout
+  </div>
+)}
                
                 
             </main>

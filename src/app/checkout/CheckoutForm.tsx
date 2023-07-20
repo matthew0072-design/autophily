@@ -131,11 +131,11 @@ let grandTotal = ((total  * 0.05) + total + 10)
                                 
                                 <div className="flex flex-col gap-4 w-auto lg:mx-8   ">
                                     <label className='text-[12px] rounded-lg font-bold leading-[normal] tracking-[-0.214px] flex  gap-2 border-2  w-[280px] h-[56px] items-center md:w-[315px]  '>
-                                        <input type="radio" required {...register('paymentType')} value="e-Money" className=' w-[20px] h-[20px] ml-8  border-[#CFCFCF] bg-white p-1.5 rounded-lg focus:outline-none focus:ring-[#D87D4A] focus:border-[#D87D4A] focus:z-10  ring-[#D87D4A] ring-offset-2 '/>  
+                                        <input type="radio" required {...register('paymentType')} value="e-Money" className='hover:cursor-pointer checked:text-[#D87D4A] w-[20px] h-[20px] ml-8  border-[#CFCFCF] bg-white p-1.5 rounded-lg focus:outline-none focus:ring-[#D87D4A] focus:border-[#D87D4A] focus:z-10  ring-[#D87D4A] ring-offset-2 '/>  
                                         <span className='font-bold text-sm  tracking-[-0.25px] '>E - Money</span>
                                     </label>
                                     <label className='text-[12px] rounded-lg font-bold leading-[normal] tracking-[-0.214px] flex  gap-2 border-2 w-[280px] h-[56px] items-center md:w-[315px]'>
-                                    <input type="radio" required {...register('paymentType')} value="cash on delivery" className='w-[20px] h-[20px] ml-8 border-2 border-[#CFCFCF] bg-white p-1.5 rounded-lg focus:outline-none focus:ring-[#D87D4A] focus:border-[#D87D4A] focus:z-10  ring-[#D87D4A] ring-offset-2'/>
+                                    <input type="radio" required {...register('paymentType')} value="cash on delivery" className='hover:cursor-pointer w-[20px] h-[20px] ml-8 border-2 border-[#CFCFCF] bg-white p-1.5 rounded-lg focus:outline-none focus:ring-[#D87D4A] focus:border-[#D87D4A] focus:z-10  ring-[#D87D4A] ring-offset-2'/>
                                     <span className='font-bold text-sm  tracking-[-0.25px] '>Cash on Delivery</span>
                                     </label>
                                 </div>
